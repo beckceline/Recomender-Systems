@@ -23,7 +23,7 @@ In diesem Tutorial werden wir ein Model-based CF System implimentieren indem wir
 
 ### Die Daten
 
-Wir werden den berühmten MovieLens Datensatz verwenden, der einer de am häufigsten verwendeten Datansaätze zum Implementieren und Testen von EMpfehlungssystemen ist. Er enthält 100k Filmbewertungen von 943 Nutzern für eine Auswahl an insgesamt 1682 Filmen.
+Wir werden den berühmten MovieLens Datensatz verwenden, der einer de am häufigsten verwendeten Datansaätze zum Implementieren und Testen von Empfehlungssystemen ist. Er enthält 100k Filmbewertungen von 943 Nutzern für eine Auswahl an insgesamt 1682 Filmen.
 
 Du kannst einfach die u.data Datei verwenden, die im Lektionsverzeichnis hinterlegt ist.
 

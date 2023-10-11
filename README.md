@@ -33,13 +33,17 @@ Um Empfehlungen zu treffen, müssen wir die Ähnlichkeitsmatrizen zwischen Nutze
 
 7. Model-Based Collaborative Filtering
 Im Gegensatz zum Memory-Based Collaborative Filtering basiert Model-Based Collaborative Filtering auf Matrix-Faktorisierung (MF). Dieser Ansatz verwendet latente Variablen und Dimensionsreduktion, um Empfehlungen zu erstellen.
-MF lernt die latenten Präferenzen von Nutzern und die latenten Merkmale von Objekten aus den vorhandenen Bewertungen. Auf diese Weise können Vorhersagen für unbekannte Bewertungen getroffen werden.
-Es ist wichtig zu verstehen, dass Model-Based CF nur auf vorhandenen Daten basiert, um latente Merkmale zu lernen. Je mehr Daten verfügbar sind, desto besser kann das Modell lernen und Empfehlungen generieren. In diesem Projekt verwenden wir Singular Value Decomposition (SVD) für die Matrix-Faktorisierung.
+Es ist wichtig zu verstehen, dass Model-Based CF nur auf vorhandenen Daten basiert, um latente Merkmale zu lernen. Je mehr Daten verfügbar sind, desto besser kann das Modell lernen und Empfehlungen generieren. In diesem Projekt verwenden wir Singular Value Decomposition (SVD) für die Matrix-Faktorisierung. Ein bekannter Ansatz, der sich in der Praxis bewährt hat. Er lernt latente Nutzerpräferenzen und Objekteigenschaften aus vorhandenen Bewertungen.
 
 ### Ergebnis
 
-Um die Leistung der Empfehlungssysteme zu bewerten, verwenden wir Metriken wie den Root Mean Squared Error (RMSE). Der RMSE misst die Genauigkeit der Vorhersagen, indem er den Unterschied zwischen den vorhergesagten und den tatsächlichen Bewertungen bewertet.
-Die Auswertung zeigt, wie gut unser Modell in der Lage ist, Vorhersagen zu treffen und Empfehlungen zu generieren.
+Um die Leistung unseres Empfehlungssystems zu bewerten, verwenden wir den Root Mean Squared Error (RMSE). Ein niedriger RMSE zeigt an, dass unsere Vorhersagen den tatsächlichen Werten nahe kommen.
+
+Memory-basierte CF-Algorithmen sind einfach zu implementieren, liefern vernünftige Vorhersagen, haben jedoch Schwierigkeiten bei der Skalierbarkeit und dem Umgang mit neuen Nutzern oder Objekten. Model-based CF-Methoden sind skalierbarer, können mit weniger Daten arbeiten, aber stehen ebenfalls vor Herausforderungen bei neuen Einträgen.
+
+Die Bewertung des Seltenheitsniveaus der Daten zeigt, wie gut das Modell mit den gegebenen Daten umgeht. Hybride Empfehlungssysteme kombinieren CF- und Inhaltsbasierte Modelle, um die Vorhersagegenauigkeit zu erhöhen.
+
+Zusammenfassend zeigt diese Auswertung, wie die Wahl des Empfehlungssystems und die Verwendung von Modellen wie SVD die Vorhersagegenauigkeit beeinflussen können. Die Verwendung von RMSE und ähnlichen Metriken ermöglicht die Bewertung und Verbesserung der Leistung solcher Systeme.
 
 Fortgeschrittene Empfehlungssysteme sind komplex, erfordern Verständnis von Memory-Based und Model-Based Collaborative Filtering und bieten Möglichkeiten zur personalisierten Empfehlung. Es ist wichtig, die Vor- und Nachteile dieser Ansätze zu verstehen und die Leistung der Modelle zu bewerten, um optimale Empfehlungen zu generieren.
 

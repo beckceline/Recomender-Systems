@@ -15,23 +15,32 @@ Wir werden den berühmten MovieLens Datensatz verwenden, der einer der am häufi
 
 ### Schritte: 
 
-3. Train-Test-Aufteilung: 
-Wir teilen die Daten in Trainings- und Testdaten auf, um die Leistung des Empfehlungssystems zu bewerten. Dabei verwenden wir die Funktion train_test_split aus Scikit-Learn.
+1. Daten laden und Überblick verschaffen: Zu Beginn importieren wir die erforderlichen Bibliotheken, darunter numpy und pandas, um mit den Daten zu arbeiten. Anschließend lesen wir die "u.data"-Datei ein, die den vollständigen Datensatz enthält. Die Daten in dieser Datei sind in einem bestimmten Format, weshalb wir Tab als Trennzeichen festlegen. Nach dem Einlesen der Daten haben wir eine Datenstruktur, die die Nutzer, Filme, Bewertungen und Zeitstempel enthält.
 
-4. Memory-Based Collaborative Filtering: 
-Memory-Based CF-Ansätze können in zwei Hauptkategorien unterteilt werden: user-item filtering und item-item filtering. Bei user-item filtering werden ähnliche Nutzer gefunden, um Empfehlungen für den Nutzer zu erstellen. Bei item-item filtering werden ähnliche Objekte gefunden, um Empfehlungen für ein bestimmtes Objekt zu erstellen.
-Wir erstellen eine User-Item-Matrix für Trainings- und Testdaten und berechnen die Kosinusähnlichkeiten zwischen den Nutzern und den Objekten.
+2. Datenüberblick: Wir werfen einen ersten Blick auf die Daten, um sicherzustellen, dass sie korrekt eingelesen wurden. Dies hilft uns, die Daten besser zu verstehen.
+Nach der Datenerfassung haben wir jetzt den Nutzer- und Filmtitel als "item_id". Um die Filmtitel anzuzeigen, fügen wir die entsprechenden Titelinformationen aus der Datei "Movie_Id_Titles.csv" zu unserem DataFrame hinzu. Wir stellen auch fest, wie viele eindeutige Nutzer und Filme im Datensatz vorhanden sind. Dies ist wichtig, um die Dimensionen der Empfehlungsmatrizen festzulegen.
 
-5. Berechnung der Vorhersagen: 
-Wir verwenden die erstellten Ähnlichkeitsmatrizen, um Vorhersagen zu treffen. Für User-based CF verwenden wir eine gewichtete Durchschnittsberechnung, um Vorhersagen zu treffen. Für Item-based CF verwenden wir die Ähnlichkeiten zwischen den Objekten und den Bewertungen der Nutzer, um Vorhersagen zu treffen.
+3. Train-Test-Split: Um die Leistung unseres Empfehlungssystems zu bewerten, teilen wir den Datensatz in Trainings- und Testdaten auf. Dies ermöglicht es uns, die Vorhersagen auf den Testdaten zu überprüfen und die Qualität des Modells zu beurteilen. Es ist jedoch wichtig zu beachten, dass Empfehlungssysteme aufgrund ihrer Natur schwer zu bewerten sind. Daher ist der Train-Test-Split in diesem Fall anders als bei herkömmlichen Machine-Learning-Aufgaben.
 
-6. Auswertung: 
-Die Leistung des Empfehlungssystems wird anhand des Root Mean Squared Error (RMSE) gemessen, der die Genauigkeit der vorhergesagten Bewertungen bewertet.
+4. Memory-Based Collaborative Filtering
+Memory-Based Collaborative Filtering-Ansätze können in zwei Hauptkategorien unterteilt werden: user-item filtering und item-item filtering. 
+* User-Item Filtering: Empfiehlt Objekte, die von Nutzern gemocht wurden, die ähnliche Bewertungen abgegeben haben.
+* Item-Item Filtering: Empfiehlt Objekte, die von Nutzern gemocht wurden, die dasselbe Objekt gemocht haben.
+Die Grundlage für diese Ansätze ist die Erstellung einer User-Item-Matrix für Trainings- und Testdaten, die auf den verfügbaren Bewertungen basiert.
 
-7. Model-Based Collaborative Filtering:
-Model-based CF basiert auf Matrix-Faktorisierung (MF) und wird häufig in Empfehlungssystemen verwendet. Es zielt darauf ab, die latenten Präferenzen von Nutzern und die latenten Merkmale von Objekten aus den gegebenen Bewertungen zu lernen.
-In diesem Tutorial verwenden wir Singular Value Decomposition (SVD) für die Matrix-Faktorisierung.
+5. Berechnung der Vorhersagen
+Um Empfehlungen zu treffen, müssen wir die Ähnlichkeitsmatrizen zwischen Nutzern und Objekten berechnen. Für User-based CF verwenden wir eine gewichtete Durchschnittsberechnung, für Item-based CF verwenden wir die Ähnlichkeiten zwischen den Objekten und den Bewertungen der Nutzer, um Vorhersagen zu treffen. Dies erfolgt durch die Berechnung der Kosinus-Ähnlichkeit, die auf den vorhandenen Bewertungen basiert.
+
+7. Model-Based Collaborative Filtering
+Im Gegensatz zum Memory-Based Collaborative Filtering basiert Model-Based Collaborative Filtering auf Matrix-Faktorisierung (MF). Dieser Ansatz verwendet latente Variablen und Dimensionsreduktion, um Empfehlungen zu erstellen.
+MF lernt die latenten Präferenzen von Nutzern und die latenten Merkmale von Objekten aus den vorhandenen Bewertungen. Auf diese Weise können Vorhersagen für unbekannte Bewertungen getroffen werden.
+Es ist wichtig zu verstehen, dass Model-Based CF nur auf vorhandenen Daten basiert, um latente Merkmale zu lernen. Je mehr Daten verfügbar sind, desto besser kann das Modell lernen und Empfehlungen generieren. In diesem Projekt verwenden wir Singular Value Decomposition (SVD) für die Matrix-Faktorisierung.
 
 ### Ergebnis
 
-Empfehlungssysteme sind mächtige Werkzeuge, um personalisierte Empfehlungen für Nutzer basierend auf deren Vorlieben und Verhaltensweisen zu erstellen. Sie sind in vielen Anwendungen von großer Bedeutung, wie z. B. in E-Commerce-Plattformen, sozialen Medien und Streaming-Diensten. Das Verständnis der verschiedenen Methoden und deren Implementierung in Python kann wertvoll sein, um personalisierte Empfehlungssysteme zu erstellen und zu verbessern.
+Um die Leistung der Empfehlungssysteme zu bewerten, verwenden wir Metriken wie den Root Mean Squared Error (RMSE). Der RMSE misst die Genauigkeit der Vorhersagen, indem er den Unterschied zwischen den vorhergesagten und den tatsächlichen Bewertungen bewertet.
+Die Auswertung zeigt, wie gut unser Modell in der Lage ist, Vorhersagen zu treffen und Empfehlungen zu generieren.
+
+Fortgeschrittene Empfehlungssysteme sind komplex, erfordern Verständnis von Memory-Based und Model-Based Collaborative Filtering und bieten Möglichkeiten zur personalisierten Empfehlung. Es ist wichtig, die Vor- und Nachteile dieser Ansätze zu verstehen und die Leistung der Modelle zu bewerten, um optimale Empfehlungen zu generieren.
+
+
